@@ -1,4 +1,4 @@
-package com.felipe.silva.security;
+package com.felipe.silva.rota.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception{
 		http
 			.authorizeRequests()
-				.antMatchers("/","/css/**","/index").permitAll()
+				.antMatchers("/","/css/**","/index", "/rotas", "/rotas/").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

@@ -1,4 +1,4 @@
-package com.felipe.silva.modulo;
+package com.felipe.silva.rota.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
