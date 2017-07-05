@@ -24,7 +24,7 @@
             <strong>Editar Rota</strong>
          </div>
          <div class="panel-body">
-            <form class="form-horizontal" th:object="${rota}" th:action="@{/save}" method="POST" style="margin: 10px">
+            <form class="form-horizontal" th:object="${rota}" th:action="@{/save}" method="POST" style="margin: 10px" onsubmit="return sendRoute()">
                <div class="form-group">
                <!-- <div class="form-group row">
                         <div class="col-md-2" th:if="${#fields.hasAnyErrors()}">
@@ -39,7 +39,7 @@
                         </div>
                      </div>
                      <div class="form-group row">
-                   	 	<div class="col-md-2" th:classappend="${#fields.hasErrors('name')}? 'has-error'">-->
+                   	 	<div class="col-md-2" th:classappend="${#fields.hasErrors('name')}? 'has-error'">
                            <label>Nome da Rota</label> 
                            <input id="nameRoute" type="text" class="form-control input-sm" th:field="*{name}" maxlength="150" placeholder="Nome da Rota"/>
                     	 </div>
@@ -47,7 +47,7 @@
                      <div class="form-group row">
                 	 	<div class="col-md-2" th:classappend="${#fields.hasErrors('routeDate')}? 'has-error'">
                            <label>Data</label> 
-                           <input id="dateRoute" type="date" class="form-control input-sm" th:field="*{routeDate}" placeholder="dd/mm/aaaa"/>
+                           <input id="dateRoute" type="text" class="form-control input-sm" th:field="*{routeDate}" placeholder="dd/mm/aaaa"/>
                 		</div>
                      </div>
                     <div class="form-group row">
@@ -56,26 +56,32 @@
 	                        <input id="vehicleId" type="number" min="1" class="form-control input-sm" th:field="*{vehicleId}"/>
 	              	  	</div>
                   	</div>	
+                  	
+                  	<script th:inline="javascript">
+	//<![CDATA[
+ 
+        var markersAux =  [[*{stops}]];;
+    	//]]>
+    	</script>
                      <div class="form-group row">
                         <div class="col-md-2" th:classappend="${#fields.hasErrors('routeDate')}? 'has-error'">
                            <label>Stops</label> 
-                           <div>
                               <ul>
                                  <li th:each="item, stat : *{stops}" class="itemRow">
-                                       <label th:for="${'name-'+stat.index}">Name</label>
-                                       <input type="text" class="form-control quantity" name="name"
+                                      
+                                       <input type="hidden" class="form-control quantity" name="name"
                                           th:field="*{stops[__${stat.index}__].name}" th:id="${'stopName-'+stat.index}"/>
-                                       <label th:for="${'lat-'+stat.index}">Latitude</label>
-                                       <input type="text" class="form-control quantity" name="lat"
-                                          th:field="*{stops[__${stat.index}__].lat}" th:id="${'stopLat-'+stat.index}"/>
-                                       <label th:for="${'lng-'+stat.index}" >Longitude</label>
-                                       <input type="text" class="form-control quantity" name="lng"
-                                          th:field="*{stops[__${stat.index}__].lng}" th:id="${'stopLng-'+stat.index}"/>
+                                       
+                                       <input type="hidden" class="form-control quantity" name="lat"
+                                          th:field="*{stops[__${stat.index}__].position.lat}" th:id="${'stopLat-'+stat.index}"/>
+                                     
+                                       <input type="hidden" class="form-control quantity" name="lng"
+                                          th:field="*{stops[__${stat.index}__].position.lng}" th:id="${'stopLng-'+stat.index}"/>
                                  </li>
                               </ul>
-                           </div>
                         </div>
                      </div>
+                     <div id="divMap"></div>
                </div>
                <div class="form-group row">
                   <button type="submit" class="btn btn-sm btn-primary">Salvar</button>
@@ -85,4 +91,6 @@
          </div>
       </div>
    </body>
+      <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="js/rotaEdit.js" th:src="@{/js/rotaEdit.js}"></script>
 </html>

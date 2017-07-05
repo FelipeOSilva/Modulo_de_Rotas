@@ -4,6 +4,21 @@ body {
   background-color: #eee;
 }
 
+li{
+	 list-style-type: none;
+}
+ul{
+	 list-style-type: none;
+}
+#divMap {
+	position: relative;
+	top: 0;
+	display: block;
+	height: 500px;
+	z-index: 0;
+	margin: 10px 0 60px 0;
+}
+
 .form-signin {
   max-width: 400px;
   padding: 15px;

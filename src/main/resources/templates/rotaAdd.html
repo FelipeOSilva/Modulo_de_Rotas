@@ -22,7 +22,7 @@
             <strong>Cadastro de Rotas</strong>
          </div>    
          <div class="panel-body">
-            <form class="form-horizontal" th:object="${rota}" th:action="@{/saveRota}" method="POST" style="margin: 10px">
+            <form class="form-horizontal" th:object="${rota}" th:action="@{/saveRota}" method="POST" style="margin: 10px" onsubmit="return sendRoute()">
                <div class="form-group">
 	               <div class="form-group row">   
     	              <div class="col-md-2" th:classappend="${#fields.hasErrors('name')}? 'has-error'">          	 	     
@@ -33,7 +33,7 @@
                   <div class="form-group row">
 	              	<div class="col-md-2" th:classappend="${#fields.hasErrors('routeDate')}? 'has-error'">    		           
                         <label>Data</label> 
-                        <input id="dateRoute" type="date" class="form-control input-sm" th:field="*{routeDate}" placeholder="dd/mm/aaaa"/>
+                        <input id="dateRoute" type="text" class="form-control input-sm" th:field="*{routeDate}" placeholder="dd/mm/aaaa"/>
               	  	</div>
                   </div>
                   <div class="form-group row">
@@ -45,30 +45,32 @@
                   <div class="form-group row">
                      <div class="col-md-2" th:classappend="${#fields.hasErrors('routeDate')}? 'has-error'">
                         <label>Stops</label> 
-                        <div>
                            <ul>
-                              <li th:each="i : ${#numbers.sequence(0, 2)}" class="itemRow" >									
-                                 <label th:for="${'name-'+i}">Name</label>
-                                 <input type="text" class="form-control quantity" name="name"
-                                    th:field="*{stops[__${i}__].name}" th:id="${'stopName-'+i}"/>
-                                 <label th:for="${'lat-'+i}">Latitude</label>
-                                 <input type="text" class="form-control quantity" name="lat"
-                                    th:field="*{stops[__${i}__].lat}" th:id="${'stopLat-'+i}"/>
-                                 <label th:for="${'lng-'+i}" >Longitude</label>
-                                 <input type="text" class="form-control quantity" name="lng"
-                                    th:field="*{stops[__${i}__].lng}" th:id="${'stopLng-'+i}"/>
+                              <li th:each="i : ${#numbers.sequence(0, 3)}" class="itemRow" >									
+                                 
+                                 <input th:id="${'stopName-'+i}" type="hidden" th:field="*{stops[__${i}__].name}"/>
+                                 
+                                 <input th:id="${'stopLat-'+i}" type="hidden" th:field="*{stops[__${i}__].position.lat}"/>
+                                 
+                                 <input th:id="${'stopLng-'+i}" type="hidden" th:field="*{stops[__${i}__].position.lng}"/>
                               </li>
                            </ul>
-                        </div>
                      </div>
                   </div>
+               <div id="divMap"></div>
                </div>
+
                <div class="form-group row">
                   <button type="submit" class="btn btn-sm btn-primary">Salvar</button>
-                  <a th:href="@{/rotas}" class="btn btn-sm btn-default">Cancelar</a>
+                  <a th:href="@{/}" class="btn btn-sm btn-default">Cancelar</a>
                </div>
             </form>
          </div>
       </div>
    </body>
+   <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script>
+
+	</script>
+	<script type="text/javascript" src="js/rotaAdd.js" th:src="@{/js/rotaAdd.js}"></script>
 </html>

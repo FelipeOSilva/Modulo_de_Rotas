@@ -2,7 +2,7 @@ package com.felipe.silva.rota.model;
 
 public class Coordenada {
 	private Double lat;
-	private Double coordenada_lng;
+	private Double lng;
 	
 	/*
 	 * public Coordenada() { this.setCoordenada_lat(coordenada_lat);
@@ -15,10 +15,10 @@ public class Coordenada {
 	public void setLat(Double lat) {
 		this.lat = lat;
 	}
-	public Double getCoordenada_lng() {
-		return coordenada_lng;
+	public Double getLng() {
+		return lng;
 	}
-	public void setCoordenada_lng(Double coordenada_lng) {
-		this.coordenada_lng = coordenada_lng;
+	public void setLng(Double lng) {
+		this.lng = lng;
 	}
 }
