@@ -8,9 +8,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
       <title>Login</title>
       <!-- Bootstrap  CSS -->
-      <link href="css/bootstrap/bootstrap.min.css" th:href="@{/css/bootstrap/bootstrap.min.css}" rel="stylesheet" />
+      <link href="../static/css/bootstrap/bootstrap.min.css" th:href="@{/css/bootstrap/bootstrap.min.css}" rel="stylesheet" />
       <!-- CSS customizado -->
-      <link href="css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+      <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -26,11 +26,11 @@
          </div>
          <form class="form-signin" th:action="@{/login}" method="POST">
             <h2 class="form-signin-heading">Entrar</h2>
-            <label for="inputEmail" class="sr-only">Usuário</label> 
-            <input name="username" type="text" id="inputUsuario" class="form-control"
+            <label for="inputUsername" class="sr-only">Usuário</label> 
+            <input name="username" type="text" id="inputUsername" class="form-control"
                placeholder="Usuário" /> 
-            <label for="inputSenha" class="sr-only">Senha</label> 
-            <input name="password" type="password" id="inputSenha" class="form-control"
+            <label for="inputPass" class="sr-only">Senha</label> 
+            <input name="password" type="password" id="inputPass" class="form-control"
                placeholder="Senha"/>
             <div class="checkbox">
                <label> <input type="checkbox" value="remember-me"/>
