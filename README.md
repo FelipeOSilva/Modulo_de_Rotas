@@ -18,3 +18,8 @@ O projeto contato com a utilização das seguintes tecnologias:
  
  * Spring Security: \
  A Spring Security é uma estrutura de autenticação e controle de acesso poderosa e altamente personalizável. É o padrão de fato para garantir aplicativos baseados em Spring [[fonte]](https://projects.spring.io/spring-security/).
+
+ * Google Maps Api: \
+ Api de mapa utilizado para exibição das rotas, e para realização do cálculo da melhor rota.
+
+  
